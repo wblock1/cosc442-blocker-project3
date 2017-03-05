@@ -51,17 +51,32 @@ public class VendingMachineTest {
 	 */
 	@Test
 	public void testSlotNotEmpty(){
+		
 		vending.addItem(item, "A");
 		item = new VendingMachineItem("Candy", 1.25);
+		try{
 		vending.addItem(item, "A");
+		}
+		catch(VendingMachineException e){
+			String error = e.toString();
+			assertEquals(error, e.toString());
+			}
 		
 	}
+	
 	/**
 	 * Test if the program handles invalid Slot Input
 	 */
 	@Test
 	public void testInvalidSlotInput(){
+		try{
 		vending.getItem("F");
+		}
+		catch(VendingMachineException e){
+			assertNotNull(e);
+			
+			
+		}
 	}
 
 	/**
